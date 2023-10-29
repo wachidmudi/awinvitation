@@ -1,0 +1,60 @@
+{
+  "groom_name": "Wachid",
+  "groom_full_name": "Wachid Mudi Waluyo",
+  "bride_name": "Aminah",
+  "bride_full_name": "Siti Aminah",
+  "groom_father_name": "Mijan",
+  "groom_mother_name": "Mujiatun",
+  "is_groom_father_alive": true,
+  "is_groom_mother_alive": true,
+  "groom_social_media": [],
+  "bride_father_name": "Sugito",
+  "bride_mother_name": "Suminem",
+  "is_bride_father_alive": true,
+  "is_bride_mother_alive": true,
+  "bride_social_media": [],
+  "quotes": "",
+  "event_detail": "",
+  "date": "2023-11-12T06:00:00+07:00",
+  "address": "Ds. Dukuh RT. 05 RW. 01, Kec. Bendo, Magetan",
+  "wedding_party": [
+    {
+      "order": "1",
+      "start_date": "2023-11-12T09:00:00+07:00",
+      "end_date": "2023-11-12T12:00:00+07:00"
+    },
+    {
+      "order": "2",
+      "start_date": "2023-11-12T14:00:00+07:00",
+      "end_date": "2023-11-12T17:30:00+07:00"
+    },
+    {
+      "order": "3",
+      "start_date": "2023-11-12T18:30:00+07:00",
+      "end_date": "2023-11-12T23:00:00+07:00"
+    }
+  ],
+  "payments": [
+    {
+      "id": "1",
+      "method": "bank_transfer",
+      "name": "BCA",
+      "account_holder": "Wachid Mudi Waluyo",
+      "account_number": "3110088140",
+      "icon": "/payments/banks/bca.png"
+    },
+    {
+      "id": "2",
+      "method": "bank_transfer",
+      "name": "BRI",
+      "account_holder": "Siti Aminah",
+      "account_number": "1662201009855506",
+      "icon": "/payments/banks/bri.png"
+    }
+  ],
+  "google_map_share_url": "https://goo.gl/maps/K4G8Fn3MQaRxF9D56",
+  "google_map_embed_url": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d348.683912086216!2d111.3969122772968!3d-7.649899792669265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMzgnNTkuNyJTIDExMcKwMjMnNDguNyJF!5e0!3m2!1sen!2sid!4v1692439356856!5m2!1sen!2sid",
+  "app": {
+    "slug": "aminah-wachid"
+  }
+}

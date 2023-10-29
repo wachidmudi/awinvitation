@@ -1,0 +1,50 @@
+{
+  "name": "artia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3111",
+    "build": "next build",
+    "start": "next start -p 3111",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/server": "^11.11.0",
+    "@mantine/core": "^6.0.21",
+    "@mantine/hooks": "^6.0.21",
+    "@mantine/next": "^6.0.21",
+    "@prisma/client": "^5.0.0",
+    "@supabase/supabase-js": "^2.38.3",
+    "@tabler/icons-react": "^2.23.0",
+    "@types/node": "20.3.3",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "add-to-calendar-button-react": "^2.4.3",
+    "dayjs": "^1.11.10",
+    "eslint": "8.50.0",
+    "eslint-config-next": "^13.5.3",
+    "howler": "^2.2.4",
+    "next": "^13.5.3",
+    "qrcode": "^1.5.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "typescript": "5.1.6",
+    "url-safe-base64": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.10",
+    "@types/qrcode": "^1.5.1",
+    "prisma": "^5.0.0"
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
+  "engines": {
+    "node": ">=18.15.0",
+    "yarn": ">=1.22.19",
+    "npm": "npm is not supported, please use yarn instead"
+  },
+  "packageManager": "yarn@1.22.19"
+}
