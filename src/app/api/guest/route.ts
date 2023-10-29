@@ -1,4 +1,4 @@
-import { type NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { supabaseClient as client } from '~/lib/supabase';
 import { GuestBookResponse } from '~/lib/supabase/requests';
 
@@ -22,10 +22,10 @@ export async function GET(request: NextRequest) {
   // .eq('app_id', appId);
 
   if (error) {
-    return Response.json(error, { status: 500 });
+    return NextResponse.json(error, { status: 500 });
   }
 
-  return Response.json({ from, to, total: count, items: data ?? [] });
+  return NextResponse.json({ from, to, total: count, items: data ?? [] });
 }
 
 export async function POST(request: Request) {
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
 
   // return Response.json(data)
 
-  const res = await request.json();
-  return Response.json({ res });
-  return Response.json({ time: new Date().toISOString() });
+  // const res = await request.json();
+  // return Response.json({ res });
+  return NextResponse.json({ time: new Date().toISOString() });
 }
