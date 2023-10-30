@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { NextResponse, type NextRequest } from 'next/server';
 import { supabaseClient as client } from '~/lib/supabase';
 import { GuestBookResponse } from '~/lib/supabase/requests';
@@ -29,20 +30,53 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: Request) {
-  // const res = await fetch('https://data.mongodb-api.com/...', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'API-Key': process.env.DATA_API_KEY ?? '',
-  //   },
-  //   body: JSON.stringify({ time: new Date().toISOString() }),
-  // })
+  try {
+    const value = await request.json();
 
-  // const data = await res.json()
+    if (!value.name) {
+      throw new Error('Silakan isi nama');
+    }
 
-  // return Response.json(data)
+    if (!value.comment) {
+      throw new Error('Silakan isi pesan');
+    }
 
-  // const res = await request.json();
-  // return Response.json({ res });
-  return NextResponse.json({ time: new Date().toISOString() });
+    const { data, error } = await client
+      .from('guest_books')
+      .insert({
+        app_id: value.appId || '',
+        name: value.name,
+        group: value.group || '',
+        comment: value.comment,
+      })
+      .select();
+
+    if (error) throw error;
+
+    if (cookies().has('comment_count')) {
+      let count = Number(cookies().get('comment_count')?.value);
+      if (Number.isNaN(count)) {
+        count = 0;
+      }
+
+      if (count >= 2) throw new Error('Hanya bisa memberi pesan 2x sehari');
+
+      cookies().set('comment_count', '2', {
+        httpOnly: true,
+        maxAge: 60 * 60 * 24,
+      });
+    } else {
+      cookies().set('comment_count', '1', {
+        httpOnly: true,
+        maxAge: 60 * 60 * 24,
+      });
+    }
+
+    return NextResponse.json(data);
+  } catch (error) {
+    if (error instanceof Error) {
+      return NextResponse.json({ message: error.message }, { status: 400 });
+    }
+    return NextResponse.json(error, { status: 500 });
+  }
 }

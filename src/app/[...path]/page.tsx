@@ -39,7 +39,7 @@ export default async function Page({ params }: Props) {
   // const guestBooks = await getGuestBooks();
   // console.log('guestBooks', guestBooks);
   const inviteeName = getInviteeName(inviteeSlug);
-  console.log('inviteeName', inviteeName);
+  // console.log('inviteeName', inviteeName);
 
   return <Template1 inviteeName={inviteeName} guestBooks={[]} />;
 }

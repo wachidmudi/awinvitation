@@ -28,6 +28,7 @@ import {
   UnstyledButton,
   rem,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { useDisclosure, useInterval, useWindowScroll } from '@mantine/hooks';
 import {
   IconAt,
@@ -54,6 +55,7 @@ import { toast } from 'react-hot-toast';
 import { PaginateGuestBookResponse } from '~/app/api/guest/route';
 import bgCouple from '~/assets/background/bg-couple.png';
 import heroBg from '~/assets/background/bg-sky.jpg';
+import bgWayang from '~/assets/background/bg-wayang.png';
 import flower1 from '~/assets/background/flower-1-trans.png';
 import frameLeftTop from '~/assets/background/frame-left-top.png';
 import frameRightBottom from '~/assets/background/frame-right-bottom.png';
@@ -64,6 +66,7 @@ import frameCover from '~/assets/frame-cover-min.png';
 import { useSound } from '~/hooks/use-sound/use-sound';
 import { getInfo } from '~/lib/api';
 import { GuestBookResponse } from '~/lib/supabase/requests';
+import { isJson } from '~/utils/is-json';
 // import { QRCodeImageClient } from '../qr-code/client/qr-code-client';
 
 dayjs.locale('id');
@@ -342,7 +345,20 @@ const DateSection = () => {
           </AspectRatio>
         </Box>
       </Box>
-      <Box pos="relative" w="100%" h="200px" bg="pink.2" mb="lg" />
+      <Box pos="relative" w="100%" h="200px" bg="pink.2" mb="lg">
+        <Center
+          pos="absolute"
+          bg="rgba(0, 0, 0, 0.75)"
+          w="100%"
+          h="100%"
+          sx={{ zIndex: 2 }}
+        >
+          <Text c="white" size={50} ff="var(--font-rouge-script)" fs="italic">
+            Save The Date
+          </Text>
+        </Center>
+        <Image src={bgWayang} fill alt="" style={{ objectFit: 'cover' }} />
+      </Box>
       <Box mb="xs" px="xs">
         <Box mb="xs">
           <Text>Sesi 1 : Pukul 11:00 - 14:00</Text>
@@ -546,6 +562,20 @@ const GuestBookSection = ({ guestBooks }: Props) => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(0);
   const [isLoading, setLoading] = useState(false);
+  const [isMutating, setMutating] = useState(false);
+
+  const form = useForm({
+    initialValues: {
+      name: '',
+      comment: '',
+    },
+
+    validate: {
+      name: value => (value ? null : 'Silakan isi nama'),
+      comment: value =>
+        value && value.length < 4 ? 'Minimum pesan adalah 4 karakter' : null,
+    },
+  });
 
   const getPagination = () => {
     const PER_PAGE = 5;
@@ -613,36 +643,78 @@ const GuestBookSection = ({ guestBooks }: Props) => {
 
         <Box pos="relative" bg="pink.2" pb="md">
           <Box h={200} pos="relative">
-            <Box
+            <Center
               pos="absolute"
-              bg="black"
+              bg="rgba(0, 0, 0, 0.75)"
               w="100%"
               h="100%"
-              sx={{ zIndex: 2, opacity: 0.5 }}
-            />
+              sx={{ zIndex: 2 }}
+            >
+              <Text
+                c="white"
+                size={50}
+                ff="var(--font-rouge-script)"
+                fs="italic"
+              >
+                Hope & Love This Moment
+              </Text>
+            </Center>
             <Image src={bgCouple} fill alt="" style={{ objectFit: 'cover' }} />
-            {/* <AspectRatio ratio={500 / 200}>
-            </AspectRatio> */}
           </Box>
 
           <Paper m="md" p="sm" radius="lg" shadow="xs">
-            <Box component="form" ta="start">
+            <Box
+              component="form"
+              ta="start"
+              onSubmit={form.onSubmit(async data => {
+                try {
+                  setMutating(true);
+                  const response = await fetch('/api/guest', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                  });
+                  const result = (await response.json()) as GuestBookResponse[];
+                  if (!response.ok) throw new Error(JSON.stringify(result));
+
+                  setGuests(state => [...result, ...state]);
+                  form.reset();
+                } catch (error) {
+                  let message = 'Gagal menambah buku tamu. ';
+                  if (error instanceof Error) {
+                    message += isJson(error.message)
+                      ? JSON.parse(error.message)?.message
+                      : 'Unknown';
+                  }
+                  toast.error(message);
+                } finally {
+                  setMutating(false);
+                }
+              })}
+            >
               <TextInput
                 label="Nama"
                 placeholder="Masukkan Nama Kamu"
+                required
                 withAsterisk
                 icon={<IconUser size="1rem" />}
                 mb="xs"
+                {...form.getInputProps('name')}
               />
               <Textarea
                 label="Pesan / Wejangan"
                 placeholder="Masukkan Pesan / Wejangan Kamu"
+                required
                 icon={<IconMessage size="1rem" />}
                 minRows={4}
                 mb="xs"
+                {...form.getInputProps('comment')}
               />
               <Box ta="center">
-                <Button type="submit" leftIcon={<IconSend size="1.2rem" />}>
+                <Button
+                  type="submit"
+                  leftIcon={<IconSend size="1.2rem" />}
+                  loading={isMutating}
+                >
                   Kirim
                 </Button>
               </Box>
