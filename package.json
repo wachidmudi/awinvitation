@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3111",
+    "dev": "next dev -p 3111 --experimental-https",
     "build": "next build",
-    "start": "next start -p 3111",
+    "start": "next start -p 3111 --experimental-https",
     "lint": "next lint"
   },
   "dependencies": {
@@ -31,12 +31,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
+    "scrollreveal": "^4.0.9",
     "typescript": "5.1.6",
     "url-safe-base64": "^1.3.0"
   },
   "devDependencies": {
     "@types/howler": "^2.2.10",
     "@types/qrcode": "^1.5.1",
+    "@types/scrollreveal": "^0.0.10",
     "prisma": "^5.0.0"
   },
   "prisma": {
