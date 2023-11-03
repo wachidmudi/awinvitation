@@ -10,7 +10,6 @@ import {
   Center,
   Collapse,
   CopyButton,
-  Divider,
   Flex,
   Grid,
   Group,
@@ -29,7 +28,12 @@ import {
   rem,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useDisclosure, useInterval, useWindowScroll } from '@mantine/hooks';
+import {
+  useDisclosure,
+  useInterval,
+  useOs,
+  useWindowScroll,
+} from '@mantine/hooks';
 import {
   IconAt,
   IconBook,
@@ -53,6 +57,8 @@ import Image from 'next/image';
 import { Fragment, Suspense, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { PaginateGuestBookResponse } from '~/app/api/guest/route';
+import bride from '~/assets/aminah-min.png';
+import bgWave from '~/assets/background/bg-abstract-1.jpg';
 import bgCouple from '~/assets/background/bg-couple.png';
 import heroBg from '~/assets/background/bg-sky.jpg';
 import bgWayang from '~/assets/background/bg-wayang.png';
@@ -63,6 +69,7 @@ import sakura2 from '~/assets/background/sakura-2.png';
 import sakura3 from '~/assets/background/sakura-3.png';
 import sakura4 from '~/assets/background/sakura-4.png';
 import frameCover from '~/assets/frame-cover-min.png';
+import groom from '~/assets/wachid-min.png';
 import { useSound } from '~/hooks/use-sound/use-sound';
 import { getInfo } from '~/lib/api';
 import { GuestBookResponse } from '~/lib/supabase/requests';
@@ -188,6 +195,7 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
             </Flex>
             <Box h={60}>
               <Button
+                className="fx-zoom-in"
                 size="md"
                 onClick={() => {
                   toggleBodyOverflow();
@@ -219,21 +227,20 @@ const HeroSection = () => (
     />
     <Flex
       ta="center"
-      tt="uppercase"
       h="100vh"
       justify="center"
       align="center"
       pos="relative"
       sx={{ zIndex: 1 }}
     >
-      <Box fw={500}>
-        <Text mb="xs">
+      <Box fw={600}>
+        <Text mb="xs" className="fade-in">
           &ldquo;And of His signs is that He created for you from yourselves
           mates that you may find tranquility in them and He placed between you
           affection and mercy. Indeed in that are signs for a people who give
           thought.&rdquo;
         </Text>
-        <Text>(AR-RUM: 21)</Text>
+        <Text className="fade-in">(AR-RUM: 21)</Text>
       </Box>
     </Flex>
   </Box>
@@ -244,6 +251,7 @@ const CoupleSection = () => (
     id="couple"
     component="section"
     px="xs"
+    pb={50}
     bg="#fdf9f6"
     sx={{ overflow: 'hidden' }}
   >
@@ -267,34 +275,131 @@ const CoupleSection = () => (
     </Box>
     <Grid gutter="xs" pos="relative" sx={{ zIndex: 2 }}>
       <Grid.Col span={6}>
-        <Box pos="relative" w="100%" h="290px" bg="pink.2" p="sm" mb="xs" />
-      </Grid.Col>
-      <Grid.Col span={6}>
-        <Paper p="xs" radius="md" shadow="xs">
-          <Text fz="lg" fw={600}>
-            {i.bride_full_name}
-          </Text>
-          <Text size="sm" fs="italic">
-            Putri Kedua Bp. Sugito & Ibu Suminem
-          </Text>
-          <ActionIcon variant="transparent">
-            <IconBrandInstagram size="1.5rem" />
-          </ActionIcon>
+        <Paper className="fade-in" p="md" radius="lg" shadow="xs" ta="end">
+          <Stack spacing="sm" align="end">
+            <Text fz="xl" fw={600} ff="--font-cormorant-garamond" fs="italic">
+              {i.bride_full_name}
+            </Text>
+            <Text size="sm" fs="italic">
+              Putri {i.bride_birth_order} Bp. {i.bride_father_name} & Ibu{' '}
+              {i.bride_mother_name}
+            </Text>
+            {i.bride_social_media.map(social => (
+              <ActionIcon
+                key={social.url}
+                component="a"
+                href={social.url}
+                variant="transparent"
+              >
+                <IconBrandInstagram size="1.5rem" />
+              </ActionIcon>
+            ))}
+          </Stack>
         </Paper>
       </Grid.Col>
       <Grid.Col span={6}>
-        <Paper p="xs" radius="md" shadow="xs" ta="end">
-          <Text fw="bold">{i.groom_full_name}</Text>
-          <Text size="sm" fs="italic">
-            Putra Pertama Bp. Mijan & Ibu Mujiatun
-          </Text>
-          <ActionIcon display="inline-block" variant="transparent">
-            <IconBrandInstagram size="1.5rem" />
-          </ActionIcon>
+        <Paper
+          className="fade-in"
+          pos="relative"
+          radius="lg"
+          w="100%"
+          h={290}
+          bg="pink.2"
+          shadow="xs"
+          mb="xs"
+          sx={{ overflow: 'hidden' }}
+        >
+          <Paper
+            className="fade-in"
+            pos="absolute"
+            radius="lg"
+            w="100%"
+            h={290}
+            bg="pink.0"
+            opacity={0.5}
+            shadow="xl"
+            sx={{ right: rem(-30), bottom: rem(-30) }}
+          />
+          <Paper
+            className="fade-in"
+            pos="absolute"
+            w="100%"
+            h={290}
+            bg="transparent"
+            sx={{ bottom: -40, right: -20 }}
+          >
+            <Image
+              src={bride}
+              fill
+              alt="Bride"
+              style={{ objectFit: 'contain' }}
+            />
+          </Paper>
+        </Paper>
+      </Grid.Col>
+
+      <Grid.Col span={6}>
+        <Paper
+          className="fade-in"
+          pos="relative"
+          radius="lg"
+          w="100%"
+          h={290}
+          bg="pink.2"
+          shadow="xs"
+          mb="xs"
+          sx={{ overflow: 'hidden' }}
+        >
+          <Paper
+            className="fade-in"
+            pos="absolute"
+            radius="lg"
+            w="100%"
+            h={290}
+            bg="pink.0"
+            opacity={0.5}
+            shadow="xl"
+            sx={{ left: rem(-30), bottom: rem(-30) }}
+          />
+          <Paper
+            className="fade-in"
+            pos="absolute"
+            w="100%"
+            h={290}
+            bg="transparent"
+            sx={{ bottom: -30 }}
+          >
+            <Image
+              src={groom}
+              fill
+              alt="Groom"
+              style={{ objectFit: 'contain' }}
+            />
+          </Paper>
         </Paper>
       </Grid.Col>
       <Grid.Col span={6}>
-        <Box w="100%" h="290px" bg="pink.2" p="sm" mb="xs" />
+        <Paper className="fade-in" p="md" radius="lg" shadow="xs">
+          <Stack spacing="sm">
+            <Text fz="xl" fw={600} ff="--font-cormorant-garamond" fs="italic">
+              {i.groom_full_name}
+            </Text>
+            <Text size="sm" fs="italic">
+              Putra {i.groom_birth_order} Bp. {i.groom_father_name} & Ibu{' '}
+              {i.groom_mother_name}
+            </Text>
+            {i.groom_social_media.map(social => (
+              <ActionIcon
+                key={social.url}
+                component="a"
+                href={social.url}
+                variant="transparent"
+              >
+                <IconBrandInstagram size="1.5rem" />
+              </ActionIcon>
+            ))}
+          </Stack>
+        </Paper>
       </Grid.Col>
     </Grid>
   </Box>
@@ -326,7 +431,7 @@ const DateSection = () => {
       pos="relative"
       sx={{ zIndex: 3 }}
     >
-      <Box pos="relative" my="xl">
+      <Box className="fade-in" pos="relative" my="xl">
         <TitleSection mb="xl">Resepsi</TitleSection>
         <Text>Minggu</Text>
         <Text size="xl" fw="bold">
@@ -345,7 +450,14 @@ const DateSection = () => {
           </AspectRatio>
         </Box>
       </Box>
-      <Box pos="relative" w="100%" h="200px" bg="pink.2" mb="lg">
+      <Box
+        className="fade-in"
+        pos="relative"
+        w="100%"
+        h="200px"
+        bg="pink.2"
+        mb="lg"
+      >
         <Center
           pos="absolute"
           bg="rgba(0, 0, 0, 0.75)"
@@ -359,7 +471,7 @@ const DateSection = () => {
         </Center>
         <Image src={bgWayang} fill alt="" style={{ objectFit: 'cover' }} />
       </Box>
-      <Box mb="xs" px="xs">
+      <Box className="fade-in" mb="xs" px="xs">
         <Box mb="xs">
           <Text>Sesi 1 : Pukul 11:00 - 14:00</Text>
           <Text>Sesi 2 : Pukul 14:00 - 20:00</Text>
@@ -367,12 +479,13 @@ const DateSection = () => {
         <IconMapPinFilled size="1.5rem" />
         <Text>{i.address}</Text>
       </Box>
-      <Paper m="sm" p="3px" radius="md" shadow="xs">
+      <Paper className="fade-in" m="sm" p="3px" radius="md" shadow="xs">
         <Suspense fallback={<Skeleton h={300} />}>
           <MapIframe />
         </Suspense>
       </Paper>
       <Button
+        className="fade-in"
         component="a"
         href={i.google_map_share_url}
         target="_blank"
@@ -454,6 +567,7 @@ function getRemainingTime(endTime: string): CountdownTime {
 }
 
 const CountdownSection = () => {
+  const os = useOs();
   const btnRef = useRef<HTMLButtonElement>(null);
   const [time, setTime] = useState<CountdownTime>({
     isAfter: false,
@@ -474,12 +588,13 @@ const CountdownSection = () => {
 
   return (
     <Box
+      className="fade-in"
       component="section"
       ta="center"
       pt="7rem"
       pb="3rem"
       pos="relative"
-      bg="pink.2"
+      // bg="pink.2"
       sx={{ zIndex: 1 }}
     >
       <Stack spacing={48}>
@@ -530,11 +645,17 @@ const CountdownSection = () => {
           my="md"
           mx="auto"
           onClick={async () => {
+            let appOptions: Parameters<
+              typeof handleAddToCalendar
+            >[0]['options'] = ['Google'];
+            if (os !== 'android') {
+              appOptions = ['Apple', 'Google', 'iCal'];
+            }
             const handleAddToCalendar = (await import('add-to-calendar-button'))
               .atcb_action;
             const calendarOptions: Parameters<typeof handleAddToCalendar>[0] = {
               name: `${i.bride_name} & ${i.groom_name}'s Wedding`,
-              options: ['Apple', 'Google', 'iCal'],
+              options: appOptions,
               location: i.address,
               startDate: i.date.split('T')[0],
               endDate: i.date.split('T')[0],
@@ -556,7 +677,7 @@ const CountdownSection = () => {
   );
 };
 
-const GuestBookSection = ({ guestBooks }: Props) => {
+const GuestBookSection = () => {
   const mounted = useRef(false);
   const [guests, setGuests] = useState<GuestBookResponse[]>([]);
   const [total, setTotal] = useState(0);
@@ -621,108 +742,130 @@ const GuestBookSection = ({ guestBooks }: Props) => {
   }, []);
 
   return (
-    <Box id="guest-book" component="section" ta="center">
-      <Box pos="relative">
-        <TitleSection my="xl">Buku Tamu</TitleSection>
+    <Box
+      id="guest-book"
+      component="section"
+      pos="relative"
+      ta="center"
+      sx={{ zIndex: 3 }}
+    >
+      <Box bg="white" pos="relative" py="xl">
+        <TitleSection className="fade-in" my="xl">
+          Buku Tamu
+        </TitleSection>
 
-        <Box pos="absolute" w={80} top={0} left={-18}>
+        <Box className="fade-in" pos="absolute" w={80} top={35} left={-18}>
           <AspectRatio ratio={150 / 110}>
             <Image src={sakura3} fill alt="" />
           </AspectRatio>
         </Box>
-        <Box pos="absolute" w={130} top={-13} right={-30}>
+        <Box className="fade-in" pos="absolute" w={130} top={15} right={-30}>
           <AspectRatio ratio={533 / 350} sx={{ rotate: '240deg' }}>
             <Image src={sakura4} fill alt="" />
           </AspectRatio>
         </Box>
 
-        <Text fz="sm" mb="lg">
+        <Text className="fade-in" fz="sm">
           BUKU INI SPESIAL BUAT KAMU YANG MAU KASIH PESAN / UCAPAN BUAT KAMI
           BERDUA YA, TERIMA KASIH.
         </Text>
+      </Box>
 
-        <Box pos="relative" bg="pink.2" pb="md">
-          <Box h={200} pos="relative">
-            <Center
-              pos="absolute"
-              bg="rgba(0, 0, 0, 0.75)"
-              w="100%"
-              h="100%"
-              sx={{ zIndex: 2 }}
+      <Box bg="transparent" pb="md">
+        <Box h={200} pos="relative">
+          <Center
+            pos="absolute"
+            bg="rgba(0, 0, 0, 0.75)"
+            w="100%"
+            h="100%"
+            sx={{ zIndex: 2 }}
+          >
+            <Text
+              className="fade-in"
+              c="white"
+              size={50}
+              ff="var(--font-rouge-script)"
+              fs="italic"
             >
-              <Text
-                c="white"
-                size={50}
-                ff="var(--font-rouge-script)"
-                fs="italic"
-              >
-                Hope & Love This Moment
-              </Text>
-            </Center>
-            <Image src={bgCouple} fill alt="" style={{ objectFit: 'cover' }} />
-          </Box>
+              Hope & Love This Moment
+            </Text>
+          </Center>
+          <Image
+            className="fade-in"
+            src={bgCouple}
+            fill
+            alt=""
+            style={{ objectFit: 'cover' }}
+          />
+        </Box>
 
-          <Paper m="md" p="sm" radius="lg" shadow="xs">
-            <Box
-              component="form"
-              ta="start"
-              onSubmit={form.onSubmit(async data => {
-                try {
-                  setMutating(true);
-                  const response = await fetch('/api/guest', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                  });
-                  const result = (await response.json()) as GuestBookResponse[];
-                  if (!response.ok) throw new Error(JSON.stringify(result));
+        <Paper
+          className="fade-in"
+          m="md"
+          mb={48}
+          p="sm"
+          radius="lg"
+          shadow="xs"
+        >
+          <Box
+            component="form"
+            ta="start"
+            onSubmit={form.onSubmit(async data => {
+              try {
+                setMutating(true);
+                const response = await fetch('/api/guest', {
+                  method: 'POST',
+                  body: JSON.stringify(data),
+                });
+                const result = (await response.json()) as GuestBookResponse[];
+                if (!response.ok) throw new Error(JSON.stringify(result));
 
-                  setGuests(state => [...result, ...state]);
-                  form.reset();
-                } catch (error) {
-                  let message = 'Gagal menambah buku tamu. ';
-                  if (error instanceof Error) {
-                    message += isJson(error.message)
-                      ? JSON.parse(error.message)?.message
-                      : 'Unknown';
-                  }
-                  toast.error(message);
-                } finally {
-                  setMutating(false);
+                setGuests(state => [...result, ...state]);
+                form.reset();
+              } catch (error) {
+                let message = 'Gagal menambah buku tamu. ';
+                if (error instanceof Error) {
+                  message += isJson(error.message)
+                    ? JSON.parse(error.message)?.message
+                    : 'Unknown';
                 }
-              })}
-            >
-              <TextInput
-                label="Nama"
-                placeholder="Masukkan Nama Kamu"
-                required
-                withAsterisk
-                icon={<IconUser size="1rem" />}
-                mb="xs"
-                {...form.getInputProps('name')}
-              />
-              <Textarea
-                label="Pesan / Wejangan"
-                placeholder="Masukkan Pesan / Wejangan Kamu"
-                required
-                icon={<IconMessage size="1rem" />}
-                minRows={4}
-                mb="xs"
-                {...form.getInputProps('comment')}
-              />
-              <Box ta="center">
-                <Button
-                  type="submit"
-                  leftIcon={<IconSend size="1.2rem" />}
-                  loading={isMutating}
-                >
-                  Kirim
-                </Button>
-              </Box>
+                toast.error(message);
+              } finally {
+                setMutating(false);
+              }
+            })}
+          >
+            <TextInput
+              label="Nama"
+              placeholder="Masukkan Nama Kamu"
+              required
+              withAsterisk
+              icon={<IconUser size="1rem" />}
+              mb="xs"
+              {...form.getInputProps('name')}
+            />
+            <Textarea
+              label="Pesan / Wejangan"
+              placeholder="Masukkan Pesan / Wejangan Kamu"
+              required
+              icon={<IconMessage size="1rem" />}
+              minRows={4}
+              mb="xs"
+              {...form.getInputProps('comment')}
+            />
+            <Box ta="center">
+              <Button
+                type="submit"
+                leftIcon={<IconSend size="1.2rem" />}
+                loading={isMutating}
+              >
+                Kirim
+              </Button>
             </Box>
-          </Paper>
+          </Box>
+        </Paper>
 
-          <Divider />
-
+        {guests.length > 0 && (
           <Paper m="md" p="sm" radius="lg" shadow="xs" ta="start">
             {guests.map(guest => {
               const [first, second] = guest.name?.split(' ') ?? [];
@@ -756,7 +899,7 @@ const GuestBookSection = ({ guestBooks }: Props) => {
               </Box>
             )}
           </Paper>
-        </Box>
+        )}
       </Box>
     </Box>
   );
@@ -800,12 +943,19 @@ const GiftSection = () => {
       id="gift"
       component="section"
       ta="center"
-      bg="pink.2"
       p="xl"
       pos="relative"
       sx={{ zIndex: 3 }}
     >
-      <Paper my="xl" p="md" radius="lg" shadow="xs">
+      <Paper
+        className="fade-in"
+        pos="relative"
+        my="xl"
+        p="md"
+        radius="lg"
+        shadow="xs"
+        sx={{ zIndex: 2 }}
+      >
         <TitleSection mb="xl">Kirim Hadiah</TitleSection>
 
         <Text fz="sm" mb="lg">
@@ -864,6 +1014,7 @@ const GiftSection = () => {
 const Footer = () => (
   <Box component="footer" ta="center" pos="relative" py={150}>
     <Box
+      className="fade-in"
       pos="absolute"
       w={300}
       left={-45}
@@ -875,7 +1026,7 @@ const Footer = () => (
       </AspectRatio>
     </Box>
 
-    <Stack spacing="xl" mx="lg">
+    <Stack className="fade-in" spacing="xl" mx="lg">
       <TitleSection>Terima Kasih</TitleSection>
 
       <Text>
@@ -890,6 +1041,7 @@ const Footer = () => (
     </Stack>
 
     <Box
+      className="fade-in"
       pos="absolute"
       w={300}
       right={-35}
@@ -1020,10 +1172,9 @@ const formatTime = (secs: number) => {
 
 interface Props {
   inviteeName?: string;
-  guestBooks: GuestBookResponse[];
 }
 
-export function Template1({ inviteeName, guestBooks }: Props) {
+export function Template1({ inviteeName }: Props) {
   const [muted, handler] = useDisclosure();
   const [progress, setProgress] = useState(0);
   const [play, { sound }] = useSound('/song/cintanya-aku.mp3', {
@@ -1046,6 +1197,17 @@ export function Template1({ inviteeName, guestBooks }: Props) {
 
   const interval = useInterval(() => step(), 1_000);
   useEffect(() => interval.stop, []);
+
+  // Init scroll reveal animation
+  useEffect(() => {
+    import('scrollreveal').then(({ default: scrollReveal }) => {
+      scrollReveal().reveal('.fade-in', {
+        delay: 350,
+        interval: 200,
+        scale: 0.75,
+      });
+    });
+  }, []);
 
   let show = true;
 
@@ -1091,25 +1253,45 @@ export function Template1({ inviteeName, guestBooks }: Props) {
           pos="absolute"
           w="45rem"
           h="20rem"
-          bottom={-50}
-          left="-10rem"
-          sx={{ borderRadius: '45rem / 20rem' }}
+          bottom={-200}
+          left="50%"
+          sx={{
+            borderRadius: '45rem / 20rem',
+            transform: 'translate(-50%, -50%)',
+          }}
         />
       </Box>
       {/* <AttendanceSection /> */}
-      <CountdownSection />
-      <GuestBookSection guestBooks={guestBooks} />
-      <GiftSection />
-      <Box pos="relative" sx={{ zIndex: 2 }}>
-        <Box
-          bg="pink.2"
-          pos="absolute"
-          w="45rem"
-          h="20rem"
-          bottom={-30}
-          left="-10rem"
-          sx={{ borderRadius: '45rem / 20rem' }}
-        />
+      <Box pos="relative" sx={{ overflow: 'hidden' }}>
+        <Box pos="absolute" w={1000} h={1000} top={-100} style={{ zIndex: 1 }}>
+          <Image src={bgWave} fill alt="" style={{ objectFit: 'cover' }} />
+        </Box>
+
+        <CountdownSection />
+      </Box>
+      <Box pos="relative">
+        <GuestBookSection />
+        <GiftSection />
+        <Box pos="relative" sx={{ zIndex: 2 }}>
+          <Box
+            bg="pink.2"
+            pos="absolute"
+            w="100rem"
+            h="45rem"
+            bottom={-350}
+            left="50%"
+            sx={{
+              borderRadius: '100rem / 45rem',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1,
+              overflow: 'hidden',
+            }}
+          >
+            <Box w={600} h={1200} top={200} style={{ zIndex: 1 }}>
+              <Image src={bgWave} fill alt="" style={{ objectFit: 'cover' }} />
+            </Box>
+          </Box>
+        </Box>
       </Box>
       <Footer />
 

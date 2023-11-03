@@ -41,6 +41,7 @@ export function RootStyleRegistry({ children }: Props) {
         withNormalizeCSS
         withGlobalStyles
         theme={{
+          colorScheme: 'light',
           fontFamily: 'var(--font-open-sans), sans-serif',
           components: {
             Button: {

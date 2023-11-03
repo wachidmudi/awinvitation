@@ -7,12 +7,24 @@
   "groom_mother_name": "Mujiatun",
   "is_groom_father_alive": true,
   "is_groom_mother_alive": true,
-  "groom_social_media": [],
+  "groom_birth_order": "Pertama",
+  "groom_social_media": [
+    {
+      "type": "instagram",
+      "url": "https://www.instagram.com/wachidmudi"
+    }
+  ],
   "bride_father_name": "Sugito",
   "bride_mother_name": "Suminem",
   "is_bride_father_alive": true,
   "is_bride_mother_alive": true,
-  "bride_social_media": [],
+  "bride_birth_order": "Kedua",
+  "bride_social_media": [
+    {
+      "type": "instagram",
+      "url": "https://www.instagram.com/aminah4697"
+    }
+  ],
   "quotes": "",
   "event_detail": "",
   "date": "2023-11-12T06:00:00+07:00",
