@@ -439,12 +439,12 @@ const DateSection = () => {
         </Text>
         <Text>Dua Ribu Dua Puluh Tiga</Text>
 
-        <Box pos="absolute" w={100} top={20} left={-25}>
+        <Box className="fade-in" pos="absolute" w={100} top={20} left={-25}>
           <AspectRatio ratio={218 / 167}>
             <Image src={sakura2} fill alt="" />
           </AspectRatio>
         </Box>
-        <Box pos="absolute" w={100} top={20} right={-25}>
+        <Box className="fade-in" pos="absolute" w={100} top={20} right={-25}>
           <AspectRatio ratio={218 / 167}>
             <Image src={sakura2} fill alt="" />
           </AspectRatio>
@@ -465,11 +465,23 @@ const DateSection = () => {
           h="100%"
           sx={{ zIndex: 2 }}
         >
-          <Text c="white" size={50} ff="var(--font-rouge-script)" fs="italic">
+          <Text
+            className="fade-in"
+            c="white"
+            size={50}
+            ff="var(--font-rouge-script)"
+            fs="italic"
+          >
             Save The Date
           </Text>
         </Center>
-        <Image src={bgWayang} fill alt="" style={{ objectFit: 'cover' }} />
+        <Image
+          className="fade-in"
+          src={bgWayang}
+          fill
+          alt=""
+          style={{ objectFit: 'cover' }}
+        />
       </Box>
       <Box className="fade-in" mb="xs" px="xs">
         <Box mb="xs">
