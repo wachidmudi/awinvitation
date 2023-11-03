@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Container, Flex, Title } from '@mantine/core';
+import { Accordion, Card, Container, Flex, Title } from '@mantine/core';
 import { useEffect } from 'react';
 
 interface Props {
@@ -37,6 +37,16 @@ export default function Error({ error, reset }: Props) {
             >
               Try again
             </button>
+
+            <Accordion>
+              <Accordion.Item value="info">
+                <Accordion.Control>Show Additional Info</Accordion.Control>
+                <Accordion.Panel>
+                  <pre>{error.message}</pre>
+                  <pre>{error.stack}</pre>
+                </Accordion.Panel>
+              </Accordion.Item>
+            </Accordion>
           </Card>
         </Flex>
       </Container>
