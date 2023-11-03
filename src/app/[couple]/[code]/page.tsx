@@ -49,9 +49,13 @@ export function generateMetadata({ params }: Props): Metadata {
 
 const Page = async ({ params }: Props) => {
   const { code } = params;
-  const invitee = await getInvitees();
-  const list = [...invitee.bride, ...invitee.groom];
-  const name = list.find(invitee => invitee.code === code)?.name;
+  let name: string | undefined = undefined;
+
+  if (code && code !== '-') {
+    const invitee = await getInvitees();
+    const list = [...invitee.bride, ...invitee.groom];
+    name = list.find(invitee => invitee.code === code)?.name;
+  }
 
   return <Template1 inviteeName={name} />;
 };

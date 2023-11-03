@@ -111,7 +111,7 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
       mounted={opened}
     >
       {transitionStyles => (
-        <Box
+        <Center
           component="section"
           px="xs"
           bg="white"
@@ -146,6 +146,8 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
           </AspectRatio>
           <Flex
             direction="column"
+            justify="center"
+            gap="xl"
             mih="500px"
             h="100vh"
             ta="center"
@@ -153,12 +155,7 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
             pos="relative"
             sx={{ zIndex: 2 }}
           >
-            <Flex
-              style={{ flex: 1 }}
-              direction="column"
-              justify="center"
-              mb="xl"
-            >
+            <Stack justify="center">
               <Stack spacing={46}>
                 <Box>
                   <Title order={2} fw={600}>
@@ -192,7 +189,7 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
                   </Box>
                 )}
               </Stack>
-            </Flex>
+            </Stack>
             <Box h={60}>
               <Button
                 className="fx-zoom-in"
@@ -207,7 +204,7 @@ const CoverSection = ({ play, inviteeName }: CoverSectionProps) => {
               </Button>
             </Box>
           </Flex>
-        </Box>
+        </Center>
       )}
     </Transition>
   );
