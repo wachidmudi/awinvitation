@@ -12,7 +12,6 @@ import {
 import { IconCopy } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { env } from '~/configs/env';
 import { getInfo } from '~/lib/api';
 import { Invitees } from '~/lib/data/types';
 
@@ -53,10 +52,11 @@ const CopyLinkButton = ({ copied, copy, name }: CopyLinkButtonProps) => {
 };
 
 interface Props {
+  url: string;
   data: Invitees;
 }
 
-export function GuestListPage({ data }: Props) {
+export function GuestListPage({ url, data }: Props) {
   const renderRows = (rows: Invitees['bride']) => {
     return rows.map((item, idx) => (
       <tr key={item.code}>
@@ -68,10 +68,7 @@ export function GuestListPage({ data }: Props) {
           </Text>
         </td>
         <td>
-          <CopyButton
-            value={`${env.APP_URL}/${i.app.slug}/${item.code}`}
-            timeout={2000}
-          >
+          <CopyButton value={`${url}/${item.code}`} timeout={2000}>
             {({ copied, copy }) => (
               <CopyLinkButton copy={copy} copied={copied} name={item.name} />
             )}
