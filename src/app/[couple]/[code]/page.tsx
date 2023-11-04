@@ -6,8 +6,8 @@ import { getInfo } from '~/lib/api';
 import { getInvitees } from '~/lib/data/get-invitees';
 
 const i = getInfo();
-const couple = `${i.bride_name} & ${i.groom_name}`;
-const description = `${couple}'s Wedding - Hi, You Are Invited! 🖤 Open Invitation ${couple} ${dayjs(
+const couple = `${i.bride_name} & ${i.groom_name}`; // TODO: Make this dynamic based couple slug
+const description = `${couple}'s Wedding - Hi, You Are Invited! ❤️ Open Invitation ${couple} ${dayjs(
   i.date
 ).format(
   'DD . MM . YYYY'
@@ -21,8 +21,8 @@ interface Props {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const { couple, code } = params;
-  let url = `/${couple}`;
+  const { couple: coupleSlug, code } = params;
+  let url = `/${coupleSlug}`;
   if (code && code !== '-') {
     url += `/${params.code}`;
   }
