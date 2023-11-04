@@ -21,7 +21,11 @@ interface Props {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const url = `${env.APP_URL}/${i.app.slug}/${params.code}`;
+  const { couple, code } = params;
+  let url = `/${couple}`;
+  if (code && code !== '-') {
+    url += `/${params.code}`;
+  }
   return {
     title: couple,
     description,
@@ -31,7 +35,7 @@ export function generateMetadata({ params }: Props): Metadata {
       url,
       images: [
         {
-          url: `${env.APP_URL}/couple.jpg`,
+          url: '/couple.jpg',
           type: 'image/jpg',
           alt: env.APP_NAME,
         },

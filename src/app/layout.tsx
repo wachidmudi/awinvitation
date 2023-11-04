@@ -31,6 +31,7 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(env.APP_URL),
   title: {
     default: env.APP_NAME,
     template: `%s - ${env.APP_NAME}`,
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     siteName: env.APP_NAME,
     description: 'Broadcast your invitation',
     type: 'website',
-    url: env.APP_URL,
+    url: '/',
     locale: 'id_ID',
   },
   twitter: {
@@ -58,11 +59,11 @@ export const metadata: Metadata = {
   },
   authors: {
     name: env.APP_NAME,
-    url: env.APP_URL,
+    url: '/',
   },
   applicationName: env.APP_NAME,
   alternates: {
-    canonical: env.APP_URL,
+    canonical: '/',
   },
   formatDetection: {
     telephone: false,

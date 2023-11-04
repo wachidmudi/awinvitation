@@ -69,6 +69,7 @@ export const useIdleCallbackEffect = (
 
   useEffect(() => {
     return effect(idleCallbackFunc);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
   useEffect(() => {

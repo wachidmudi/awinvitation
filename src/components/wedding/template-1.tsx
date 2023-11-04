@@ -1205,6 +1205,7 @@ export function Template1({ inviteeName }: Props) {
   }
 
   const interval = useInterval(() => step(), 1_000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => interval.stop, []);
 
   // Init scroll reveal animation
