@@ -482,8 +482,13 @@ const DateSection = () => {
       </Box>
       <Box className="fade-in" mb="xs" px="xs">
         <Box mb="xs">
-          <Text>Sesi 1 : Pukul 11:00 - 14:00</Text>
-          <Text>Sesi 2 : Pukul 14:00 - 20:00</Text>
+          {i.wedding_party.map(session => (
+            <Text key={session.order}>
+              Sesi {session.order} : Pukul{' '}
+              {dayjs(session.start_date).format('HH : mm')} -{' '}
+              {dayjs(session.end_date).format('HH : mm')}
+            </Text>
+          ))}
         </Box>
         <IconMapPinFilled size="1.5rem" />
         <Text>{i.address}</Text>

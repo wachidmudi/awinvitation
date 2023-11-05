@@ -32,8 +32,8 @@
   "wedding_party": [
     {
       "order": "1",
-      "start_date": "2023-11-12T09:00:00+07:00",
-      "end_date": "2023-11-12T12:00:00+07:00"
+      "start_date": "2023-11-12T10:00:00+07:00",
+      "end_date": "2023-11-12T13:00:00+07:00"
     },
     {
       "order": "2",
@@ -43,7 +43,7 @@
     {
       "order": "3",
       "start_date": "2023-11-12T18:30:00+07:00",
-      "end_date": "2023-11-12T23:00:00+07:00"
+      "end_date": "2023-11-12T21:00:00+07:00"
     }
   ],
   "payments": [
@@ -60,7 +60,7 @@
       "method": "bank_transfer",
       "name": "BRI",
       "account_holder": "Siti Aminah",
-      "account_number": "1662201009855506",
+      "account_number": "166201009855506",
       "icon": "/payments/banks/bri.png"
     }
   ],
