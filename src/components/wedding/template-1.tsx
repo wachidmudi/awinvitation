@@ -881,32 +881,38 @@ const GuestBookSection = () => {
 
         {guests.length > 0 && (
           <Paper m="md" p="sm" radius="lg" shadow="xs" ta="start">
-            {guests.map(guest => {
-              const [first, second] = guest.name?.split(' ') ?? [];
+            <Stack spacing="xs">
+              {guests.map(guest => {
+                const [first, second] = guest.name?.split(' ') ?? [];
 
-              return (
-                <Group key={guest.id} align="start" spacing="xs">
-                  <Avatar
-                    variant="filled"
-                    color="dark"
-                    radius="xl"
-                    tt="uppercase"
-                  >
-                    {first?.[0]}
-                    {second?.[0]}
-                  </Avatar>
-                  <Box mb="xs">
-                    <Title order={5} mb={4}>
-                      {guest.name}
-                    </Title>
-                    <Text size="sm">{guest.comment}</Text>
-                    <Text size="xs" mt={4}>
-                      {dayjs(guest.created_at).fromNow()}
-                    </Text>
+                return (
+                  <Box key={guest.id}>
+                    <Box mb="xs">
+                      <Grid gutter="xs" align="center">
+                        <Grid.Col span="content">
+                          <Avatar
+                            variant="filled"
+                            color="dark"
+                            radius="xl"
+                            tt="uppercase"
+                          >
+                            {first?.[0]}
+                            {second?.[0]}
+                          </Avatar>
+                        </Grid.Col>
+                        <Grid.Col span={10}>
+                          <Title order={5}>{guest.name}</Title>
+                          <Text size={11}>
+                            {dayjs(guest.created_at).fromNow()}
+                          </Text>
+                        </Grid.Col>
+                      </Grid>
+                      <Text size="sm">{guest.comment}</Text>
+                    </Box>
                   </Box>
-                </Group>
-              );
-            })}
+                );
+              })}
+            </Stack>
             {guests.length < total && (
               <Box ta="center" onClick={() => fetchGuestBook()}>
                 <Button loading={isLoading}>Muat Lebih</Button>
