@@ -1,6 +1,12 @@
+import { readFileSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import { generateRandomHash } from '../../utils/hash';
-import invitees from './invitees.json';
+import { Invitees } from './types';
+// import invitees from './invitees.json';
+
+const invitees = JSON.parse(
+  readFileSync(__dirname + '/invitees-with-code.json', { encoding: 'utf8' })
+) as Invitees;
 
 const items1 = [...invitees.bride];
 const items2 = [...invitees.groom];
@@ -26,10 +32,16 @@ function generateFriendlyCode(str: string): string {
 
 // 1. Generate initial code
 const list1 = items1.map(guest => {
+  if (guest.code) {
+    return guest;
+  }
   const code = generateFriendlyCode(guest.name);
   return { ...guest, code };
 });
 const list2 = items2.map(guest => {
+  if (guest.code) {
+    return guest;
+  }
   const code = generateFriendlyCode(guest.name);
   return { ...guest, code };
 });
