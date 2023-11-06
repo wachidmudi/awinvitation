@@ -25,15 +25,15 @@
       "code": "HILSIP"
     },
     {
-      "name": "Nevita ",
+      "name": "Nevita",
       "code": "NEVP5M"
     },
     {
-      "name": "Nilna ",
+      "name": "Nilna",
       "code": "NIL42R"
     },
     {
-      "name": "Sari ",
+      "name": "Sari",
       "code": "SARQ4M"
     },
     {
@@ -97,7 +97,7 @@
       "code": "VIVKET"
     },
     {
-      "name": "Kakakkuuuu Maghfiroh❤️ ",
+      "name": "Kakakkuuuu Maghfiroh❤️",
       "code": "KAKMAG"
     },
     {
@@ -105,7 +105,7 @@
       "code": "FIAPAR"
     },
     {
-      "name": "Lydia ",
+      "name": "Lydia",
       "code": "LYDBWD"
     },
     {
@@ -113,7 +113,7 @@
       "code": "MBAIND"
     },
     {
-      "name": "Putrinya RBT ",
+      "name": "Putrinya RBT",
       "code": "PUTRBT"
     },
     {
@@ -153,11 +153,11 @@
       "code": "ILHPRA"
     },
     {
-      "name": "Afi Imroatul ",
+      "name": "Afi Imroatul",
       "code": "AFIIMR"
     },
     {
-      "name": "Pingki ",
+      "name": "Pingki",
       "code": "PINF9T"
     },
     {
@@ -177,7 +177,7 @@
       "code": "REMD6H"
     },
     {
-      "name": "Sari ",
+      "name": "Sari",
       "code": "SARJMA"
     },
     {
@@ -221,11 +221,11 @@
       "code": "NURBES"
     },
     {
-      "name": "Angga ",
+      "name": "Angga",
       "code": "ANG2VK"
     },
     {
-      "name": "Ulvana ",
+      "name": "Ulvana",
       "code": "ULVG0B"
     },
     {
@@ -297,7 +297,7 @@
       "code": "NOVABA"
     },
     {
-      "name": "Risqa ABA 57 ",
+      "name": "Risqa ABA 57",
       "code": "RISABA"
     },
     {
@@ -321,7 +321,7 @@
       "code": "MBASIS"
     },
     {
-      "name": "Kak Lintang ",
+      "name": "Kak Lintang",
       "code": "KAKLIN"
     },
     {
@@ -329,7 +329,7 @@
       "code": "MBAWIN"
     },
     {
-      "name": "Anwar ",
+      "name": "Anwar",
       "code": "ANW9H2"
     },
     {
@@ -361,7 +361,7 @@
       "code": "MARRIZ"
     },
     {
-      "name": "Iin ",
+      "name": "Iin",
       "code": "IINPSM"
     },
     {
@@ -451,6 +451,122 @@
     {
       "name": "Dinda",
       "code": "DIN278"
+    },
+    {
+      "name": "Pak Ivan (Direktur MBS)",
+      "code": "PAKIVA"
+    },
+    {
+      "name": "Tadz Alif",
+      "code": "TADALI"
+    },
+    {
+      "name": "Rosyid",
+      "code": "ROS39K"
+    },
+    {
+      "name": "Tadz Sapar",
+      "code": "TADSAP"
+    },
+    {
+      "name": "Tadz Alex",
+      "code": "TADALE"
+    },
+    {
+      "name": "Tadz Rian",
+      "code": "TADRIA"
+    },
+    {
+      "name": "Us Ajeng",
+      "code": "USAJEF"
+    },
+    {
+      "name": "Us Enggar",
+      "code": "USENG5"
+    },
+    {
+      "name": "Us Esty",
+      "code": "USESTJ"
+    },
+    {
+      "name": "Us Eni",
+      "code": "USENI7"
+    },
+    {
+      "name": "Us Aris",
+      "code": "USARIK"
+    },
+    {
+      "name": "Garin Sadewa",
+      "code": "GARSAD"
+    },
+    {
+      "name": "Lia TR 05",
+      "code": "LIATR0"
+    },
+    {
+      "name": "Nadia TR 17",
+      "code": "NADTR1"
+    },
+    {
+      "name": "Lina",
+      "code": "LINDJW"
+    },
+    {
+      "name": "Vinka",
+      "code": "VINC0C"
+    },
+    {
+      "name": "Novi",
+      "code": "NOVDC9"
+    },
+    {
+      "name": "Mba Ayni",
+      "code": "MBAAYN"
+    },
+    {
+      "name": "Us Ayu Sedamba",
+      "code": "USAYUS"
+    },
+    {
+      "name": "Destina",
+      "code": "DES2K0"
+    },
+    {
+      "name": "Nadhila Choirunnisa",
+      "code": "NADCHO"
+    },
+    {
+      "name": "Mba Sabila",
+      "code": "MBASAB"
+    },
+    {
+      "name": "Mba Gita",
+      "code": "MBAGIT"
+    },
+    {
+      "name": "Mba Debby",
+      "code": "MBADEB"
+    },
+    {
+      "name": "Mba Abidah",
+      "code": "MBAABI"
+    },
+    {
+      "name": "Mba Nur Aisyah",
+      "code": "MBANUR"
+    },
+    {
+      "name": "Mba Izza",
+      "code": "MBAIZZ"
+    },
+    {
+      "name": "Aghni",
+      "code": "AGHDHQ"
+    },
+    {
+      "name": "Fafa",
+      "code": "FAF3LG"
     }
   ],
   "groom": [
@@ -487,107 +603,107 @@
       "code": "ELIYEL"
     },
     {
-      "name": "Yusup Abdurahkman ",
+      "name": "Yusup Abdurahkman",
       "code": "YUSABD"
     },
     {
-      "name": "Stefanus Suwandi ",
+      "name": "Stefanus Suwandi",
       "code": "STESUW"
     },
     {
-      "name": "Muchammad Al Fiansyah ",
+      "name": "Muchammad Al Fiansyah",
       "code": "MUCALF"
     },
     {
-      "name": "Rubi Chandraputra ",
+      "name": "Rubi Chandraputra",
       "code": "RUBCHA"
     },
     {
-      "name": "Edwar ",
+      "name": "Edwar",
       "code": "EDW2UM"
     },
     {
-      "name": "Yaden Mustapa ",
+      "name": "Yaden Mustapa",
       "code": "YADMUS"
     },
     {
-      "name": "Deny Andriana ",
+      "name": "Deny Andriana",
       "code": "DENAND"
     },
     {
-      "name": "Mahesa Fajar Nugraha ",
+      "name": "Mahesa Fajar Nugraha",
       "code": "MAHFAJ"
     },
     {
-      "name": "Budianto Pandalagi ",
+      "name": "Budianto Pandalagi",
       "code": "BUDPAN"
     },
     {
-      "name": "Shinta Ayu Ashari ",
+      "name": "Shinta Ayu Ashari",
       "code": "SHIAYU"
     },
     {
-      "name": "Hendra Ovianto Pratama ",
+      "name": "Hendra Ovianto Pratama",
       "code": "HENOVI"
     },
     {
-      "name": "Indri Herliana Sari ",
+      "name": "Indri Herliana Sari",
       "code": "INDHER"
     },
     {
-      "name": "Shintia Fitri ",
+      "name": "Shintia Fitri",
       "code": "SHIFIT"
     },
     {
-      "name": "Catur Mujiono ",
+      "name": "Catur Mujiono",
       "code": "CATMUJ"
     },
     {
-      "name": "Yayang Sekar Kinanti ",
+      "name": "Yayang Sekar Kinanti",
       "code": "YAYSEK"
     },
     {
-      "name": "Azka Aula Haqiqi ",
+      "name": "Azka Aula Haqiqi",
       "code": "AZKAUL"
     },
     {
-      "name": "Priska ",
+      "name": "Priska",
       "code": "PRIX8Y"
     },
     {
-      "name": "Hery ",
+      "name": "Hery",
       "code": "HER49G"
     },
     {
-      "name": "Soni ",
+      "name": "Soni",
       "code": "SON9QH"
     },
     {
-      "name": "Danu ",
+      "name": "Danu",
       "code": "DANZ56"
     },
     {
-      "name": "Putri ",
+      "name": "Putri",
       "code": "PUTR7B"
     },
     {
-      "name": "Kelvin ",
+      "name": "Kelvin",
       "code": "KELMY7"
     },
     {
-      "name": "Rahmadani Fitria ",
+      "name": "Rahmadani Fitria",
       "code": "RAHFIT"
     },
     {
-      "name": "Aditya Osama Hakim Efendy ",
+      "name": "Aditya Osama Hakim Efendy",
       "code": "ADIOSA"
     },
     {
-      "name": "Sholeh Hidayat ",
+      "name": "Sholeh Hidayat",
       "code": "SHOHID"
     },
     {
-      "name": "Shikha Khoe ",
+      "name": "Shikha Khoe",
       "code": "SHIKHO"
     },
     {
@@ -827,8 +943,68 @@
       "code": "SUGDWI"
     },
     {
-      "name": "Rochim",
-      "code": "ROCGDG"
+      "name": "Vandra",
+      "code": "VANID6"
+    },
+    {
+      "name": "Fitri",
+      "code": "FITNWU"
+    },
+    {
+      "name": "Wisnu Saputra",
+      "code": "WISSAP"
+    },
+    {
+      "name": "Arnot Widodo",
+      "code": "ARNWID"
+    },
+    {
+      "name": "Rudi Saputra",
+      "code": "RUDSAP"
+    },
+    {
+      "name": "Agung Saputra",
+      "code": "AGUSAP"
+    },
+    {
+      "name": "Ari Eka Novianto",
+      "code": "ARIEKA"
+    },
+    {
+      "name": "Gunawan",
+      "code": "GUNUTJ"
+    },
+    {
+      "name": "Yuspita Sari",
+      "code": "YUSSAR"
+    },
+    {
+      "name": "Ririn",
+      "code": "RIRLZB"
+    },
+    {
+      "name": "Sarmi",
+      "code": "SARY5X"
+    },
+    {
+      "name": "Widya",
+      "code": "WIDCJ8"
+    },
+    {
+      "name": "Chandra",
+      "code": "CHAXQ9"
+    },
+    {
+      "name": "Riski Kukuh",
+      "code": "RISKUK"
+    },
+    {
+      "name": "Agung Wibowo",
+      "code": "AGUWIB"
+    },
+    {
+      "name": "Bayu Gumelar",
+      "code": "BAYGUM"
     }
   ]
 }
